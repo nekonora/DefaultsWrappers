@@ -26,9 +26,9 @@ extension Dictionary: PlistCompatible where Key: PlistCompatible, Value: PlistCo
 @propertyWrapper
 public struct Storage<Value: PlistCompatible> {
     
-    let key: String
-    let defaultValue: Value
-    let storage: UserDefaults = .standard
+    public let key: String
+    public let defaultValue: Value
+    public let storage: UserDefaults = .standard
     
     public var wrappedValue: Value {
         get {
@@ -46,8 +46,8 @@ public struct Storage<Value: PlistCompatible> {
 @propertyWrapper
 public struct OptionalStorage<Value: PlistCompatible> {
     
-    let key: String
-    let storage: UserDefaults = .standard
+    public let key: String
+    public let storage: UserDefaults = .standard
     
     public var wrappedValue: Value? {
         get {
