@@ -30,7 +30,7 @@ public struct Storage<Value: PlistCompatible> {
     public let defaultValue: Value
     public let storage: UserDefaults
     
-    init(key: String, defaultValue: Value, storage: UserDefaults = .standard) {
+    public init(key: String, defaultValue: Value, storage: UserDefaults = .standard) {
         self.key = key
         self.defaultValue = defaultValue
         self.storage = storage
@@ -55,7 +55,7 @@ public struct OptionalStorage<Value: PlistCompatible> {
     public let key: String
     public let storage: UserDefaults
     
-    init(key: String, storage: UserDefaults = .standard) {
+    public init(key: String, storage: UserDefaults = .standard) {
         self.key = key
         self.storage = storage
     }
