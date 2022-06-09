@@ -28,7 +28,13 @@ public struct Storage<Value: PlistCompatible> {
     
     public let key: String
     public let defaultValue: Value
-    public let storage: UserDefaults = .standard
+    public let storage: UserDefaults
+    
+    init(key: String, defaultValue: Value, storage: UserDefaults = .standard) {
+        self.key = key
+        self.defaultValue = defaultValue
+        self.storage = storage
+    }
     
     public var wrappedValue: Value {
         get {
@@ -47,7 +53,12 @@ public struct Storage<Value: PlistCompatible> {
 public struct OptionalStorage<Value: PlistCompatible> {
     
     public let key: String
-    public let storage: UserDefaults = .standard
+    public let storage: UserDefaults
+    
+    init(key: String, storage: UserDefaults = .standard) {
+        self.key = key
+        self.storage = storage
+    }
     
     public var wrappedValue: Value? {
         get {
