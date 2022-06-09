@@ -11,15 +11,15 @@ public protocol PlistCompatible { }
 
 // MARK: - UserDefaults Compatibile Types
 // Enables us to accept compatible types to be stored in defaults, if needed
-public extension String: PlistCompatible { }
-public extension Int: PlistCompatible { }
-public extension Double: PlistCompatible { }
-public extension Float: PlistCompatible { }
-public extension Bool: PlistCompatible { }
-public extension Date: PlistCompatible { }
-public extension Data: PlistCompatible { }
-public extension Array: PlistCompatible where Element: PlistCompatible { }
-public extension Dictionary: PlistCompatible where Key: PlistCompatible, Value: PlistCompatible { }
+extension String: PlistCompatible { }
+extension Int: PlistCompatible { }
+extension Double: PlistCompatible { }
+extension Float: PlistCompatible { }
+extension Bool: PlistCompatible { }
+extension Date: PlistCompatible { }
+extension Data: PlistCompatible { }
+extension Array: PlistCompatible where Element: PlistCompatible { }
+extension Dictionary: PlistCompatible where Key: PlistCompatible, Value: PlistCompatible { }
 
 /// Handles saving and retrieving of a user default's value safely
 /// Always valid, if value is nil in defaults, it returns the default value
@@ -30,7 +30,7 @@ public struct Storage<Value: PlistCompatible> {
     let defaultValue: Value
     let storage: UserDefaults = .standard
     
-    var wrappedValue: Value {
+    public var wrappedValue: Value {
         get {
             storage.object(forKey: key) as? Value ?? defaultValue
         }
@@ -49,7 +49,7 @@ public struct OptionalStorage<Value: PlistCompatible> {
     let key: String
     let storage: UserDefaults = .standard
     
-    var wrappedValue: Value? {
+    public var wrappedValue: Value? {
         get {
             storage.object(forKey: key) as? Value
         }
